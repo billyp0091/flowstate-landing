@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  /* Import Inter from Google Fonts via CSS */
+  @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap");
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    @apply bg-surface-base text-copy-primary font-sans;
+  }
+
+  /* Selection highlight using brand color */
+  ::selection {
+    @apply bg-brand-500/30 text-copy-primary;
+  }
+}
+
+@layer utilities {
+  .backdrop-blur-glass {
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+  }
+}

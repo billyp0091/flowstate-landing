@@ -1,0 +1,193 @@
+---
+/**
+ * FlowState Landing Page
+ * ─────────────────────────────────────────────
+ * Astro handles layout, SEO, and semantic HTML.
+ * React islands handle interactivity (Framer Motion, state).
+ *
+ * Architecture: ARCHITECTURE_RULES.md
+ *   ✓ Astro for pages/layouts, React for interactive islands
+ *   ✓ SEO head with OG tags
+ *   ✓ Semantic HTML5 (header, main, section, footer)
+ *   ✓ Heading hierarchy (H1 → H2 → H3)
+ */
+
+import Navbar from "../components/Navbar.tsx";
+import Hero from "../components/Hero.tsx";
+import BentoGrid from "../components/BentoGrid.tsx";
+import "../styles/global.css";
+
+const seo = {
+  title: "FlowState — AI Workflow Automation for Modern Teams",
+  description:
+    "Automate any workflow with AI precision. FlowState connects your tools, learns your patterns, and builds automations that actually work.",
+  url: "https://flowstate.ai",
+  image: "/og-image.png",
+};
+---
+
+<!doctype html>
+<html lang="en" class="scroll-smooth">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- SEO -->
+    <title>{seo.title}</title>
+    <meta name="description" content={seo.description} />
+    <link rel="canonical" href={seo.url} />
+
+    <!-- Open Graph -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content={seo.title} />
+    <meta property="og:description" content={seo.description} />
+    <meta property="og:url" content={seo.url} />
+    <meta property="og:image" content={seo.image} />
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content={seo.title} />
+    <meta name="twitter:description" content={seo.description} />
+    <meta name="twitter:image" content={seo.image} />
+  </head>
+
+  <body class="bg-surface-base text-copy-primary antialiased overflow-x-hidden">
+    <!-- Sticky Frosted-Glass Navbar — React Island (needs scroll state + mobile toggle) -->
+    <header>
+      <Navbar client:load />
+    </header>
+
+    <main>
+      <!-- Hero Section — React Island (Framer Motion fade-in animations) -->
+      <Hero client:load />
+
+      <!-- Bento Grid Features — React Island (scroll-triggered Framer Motion) -->
+      <BentoGrid client:visible />
+    </main>
+
+    <!-- Footer — static, no JS needed -->
+    <footer class="relative border-t border-surface-border">
+      <div class="max-w-7xl mx-auto px-6 lg:px-8 py-12 lg:py-16">
+        <div class="grid grid-cols-2 md:grid-cols-4 gap-8 lg:gap-12">
+          <!-- Brand Column -->
+          <div class="col-span-2 md:col-span-1">
+            <div class="flex items-center gap-2 mb-4">
+              <div
+                class="w-8 h-8 rounded-lg bg-gradient-to-br from-brand-500 to-purple-500 flex items-center justify-center"
+              >
+                <svg
+                  width="18"
+                  height="18"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="white"
+                  stroke-width="2.5"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                >
+                  <path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"></path>
+                </svg>
+              </div>
+              <span class="text-lg font-bold tracking-tight">FlowState</span>
+            </div>
+            <p class="text-sm text-copy-secondary leading-relaxed">
+              AI-powered workflow automation for teams that move fast.
+            </p>
+          </div>
+
+          <!-- Link Columns -->
+          <div>
+            <h3 class="text-sm font-semibold text-copy-primary mb-3">
+              Product
+            </h3>
+            <nav class="space-y-2">
+              <a
+                href="#features"
+                class="block text-sm text-copy-secondary hover:text-copy-primary transition-colors"
+                >Features</a
+              >
+              <a
+                href="#pricing"
+                class="block text-sm text-copy-secondary hover:text-copy-primary transition-colors"
+                >Pricing</a
+              >
+              <a
+                href="#changelog"
+                class="block text-sm text-copy-secondary hover:text-copy-primary transition-colors"
+                >Changelog</a
+              >
+            </nav>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold text-copy-primary mb-3">
+              Resources
+            </h3>
+            <nav class="space-y-2">
+              <a
+                href="#docs"
+                class="block text-sm text-copy-secondary hover:text-copy-primary transition-colors"
+                >Documentation</a
+              >
+              <a
+                href="#blog"
+                class="block text-sm text-copy-secondary hover:text-copy-primary transition-colors"
+                >Blog</a
+              >
+              <a
+                href="#community"
+                class="block text-sm text-copy-secondary hover:text-copy-primary transition-colors"
+                >Community</a
+              >
+            </nav>
+          </div>
+
+          <div>
+            <h3 class="text-sm font-semibold text-copy-primary mb-3">
+              Company
+            </h3>
+            <nav class="space-y-2">
+              <a
+                href="#about"
+                class="block text-sm text-copy-secondary hover:text-copy-primary transition-colors"
+                >About</a
+              >
+              <a
+                href="#careers"
+                class="block text-sm text-copy-secondary hover:text-copy-primary transition-colors"
+                >Careers</a
+              >
+              <a
+                href="#contact"
+                class="block text-sm text-copy-secondary hover:text-copy-primary transition-colors"
+                >Contact</a
+              >
+            </nav>
+          </div>
+        </div>
+
+        <!-- Bottom Bar -->
+        <div
+          class="mt-12 pt-8 border-t border-surface-border flex flex-col sm:flex-row items-center justify-between gap-4"
+        >
+          <p class="text-xs text-copy-secondary">
+            &copy; 2026 FlowState Inc. All rights reserved.
+          </p>
+          <div class="flex items-center gap-6">
+            <a
+              href="#privacy"
+              class="text-xs text-copy-secondary hover:text-copy-primary transition-colors"
+              >Privacy</a
+            >
+            <a
+              href="#terms"
+              class="text-xs text-copy-secondary hover:text-copy-primary transition-colors"
+              >Terms</a
+            >
+          </div>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
