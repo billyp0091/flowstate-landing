@@ -15,6 +15,7 @@
 import Navbar from "../components/Navbar.tsx";
 import Hero from "../components/Hero.tsx";
 import BentoGrid from "../components/BentoGrid.tsx";
+import Contact from "../components/Contact.tsx";
 import "../styles/global.css";
 
 const seo = {
@@ -64,6 +65,9 @@ const seo = {
 
       <!-- Bento Grid Features — React Island (scroll-triggered Framer Motion) -->
       <BentoGrid client:visible />
+
+      <!-- Contact Form — React Island (form state + fetch submission) -->
+      <Contact client:visible />
     </main>
 
     <!-- Footer — static, no JS needed -->
@@ -170,7 +174,9 @@ const seo = {
         <!-- Bottom Bar -->
         <div
           class="mt-12 pt-8 border-t border-surface-border flex flex-col sm:flex-row items-center justify-between gap-4"
-        >
+        ><div class="max-w-7xl mx-auto px-6 lg:px-8 py-12 lg:py-16">
+  <Contact client:load />
+</div>
           <p class="text-xs text-copy-secondary">
             &copy; 2026 FlowState Inc. All rights reserved.
           </p>
